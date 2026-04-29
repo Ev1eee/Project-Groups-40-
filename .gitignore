@@ -1,0 +1,14 @@
+# Do not upload the provided data or generated local data.
+iivp-2026-challenge/
+data/
+
+# Do not upload trained models and logs.
+experiments/*.pt
+experiments/*.log
+
+# Do not upload Python or system generated files.
+__pycache__/
+*.pyc
+.venv/
+.ipynb_checkpoints/
+.DS_Store
