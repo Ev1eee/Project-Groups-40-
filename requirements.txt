@@ -1,2 +1,5 @@
-# We will list the required packages here later.
-# For example: torch, numpy, and pandas.
+torch
+torchvision
+pandas
+pillow
+tqdm
