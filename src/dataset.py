@@ -3,43 +3,9 @@ from pathlib import Path
 
 from PIL import Image
 from torch.utils.data import Dataset
-from torchvision import transforms
 
 import config
-
-
-def get_eval_transform():
-    return transforms.Compose([
-        transforms.Resize((config.IMAGE_SIZE, config.IMAGE_SIZE)),
-        transforms.ToTensor(),
-        transforms.Normalize((0.5,), (0.5,)),
-    ])
-
-
-def get_train_transform(augment=False):
-    transform_list = [
-        transforms.Resize((config.IMAGE_SIZE, config.IMAGE_SIZE)),
-    ]
-
-    if augment:
-        transform_list.append(
-            transforms.RandomAffine(
-                degrees=10,
-                translate=(0.08, 0.08),
-                scale=(0.9, 1.1),
-                fill=0,
-            )
-        )
-
-    transform_list.extend([
-        transforms.ToTensor(),
-        transforms.Normalize((0.5,), (0.5,)),
-    ])
-    return transforms.Compose(transform_list)
-
-
-def get_transform():
-    return get_eval_transform()
+from preprocess import get_eval_transform, get_train_transform, get_transform, process_image
 
 
 class DigitTrainDataset(Dataset):
@@ -75,6 +41,74 @@ class DigitTrainDataset(Dataset):
         return image, label
 
 
+class BootstrappedTrainDataset(Dataset):
+    """Training subset with deterministic synthetic affine copies.
+
+    Length = number of selected original images * (1 + copies_per_original).
+    Copy 0 is the unmodified preprocessed image. Copies 1..N are synthetic affine
+    variants generated from the bounds in config.AFFINE_SETTINGS.
+    """
+
+    def __init__(self, base_dataset, indices, preprocess_profile, affine_setting, seed):
+        self.base_dataset = base_dataset
+        self.indices = list(indices)
+        self.preprocess_profile = preprocess_profile
+        self.affine_setting = affine_setting
+        self.seed = seed
+        self.copies_per_original = int(config.AFFINE_SETTINGS[affine_setting]["copies_per_original"])
+        self.samples = [base_dataset.samples[index] for index in self.indices]
+
+    def __len__(self):
+        return len(self.indices) * (1 + self.copies_per_original)
+
+    def __getitem__(self, index):
+        original_position = index % len(self.indices)
+        copy_number = index // len(self.indices)
+        original_index = self.indices[original_position]
+        image_path, label = self.base_dataset.samples[original_index]
+        image = Image.open(image_path).convert("L")
+
+        if copy_number == 0:
+            affine_setting = "none"
+            affine_seed = self.seed
+        else:
+            affine_setting = self.affine_setting
+            affine_seed = self.seed + original_index * 1009 + copy_number * 9176
+
+        image_tensor = process_image(
+            image,
+            preprocess_profile=self.preprocess_profile,
+            affine_setting=affine_setting,
+            seed=affine_seed,
+        )
+        return image_tensor, label
+
+
+class ValidationSubset(Dataset):
+    """Validation subset that keeps original image paths available for reports."""
+
+    def __init__(self, base_dataset, indices, preprocess_profile):
+        self.base_dataset = base_dataset
+        self.indices = list(indices)
+        self.preprocess_profile = preprocess_profile
+        self.samples = [base_dataset.samples[index] for index in self.indices]
+
+    def __len__(self):
+        return len(self.indices)
+
+    def __getitem__(self, index):
+        original_index = self.indices[index]
+        image_path, label = self.base_dataset.samples[original_index]
+        image = Image.open(image_path).convert("L")
+        image_tensor = process_image(
+            image,
+            preprocess_profile=self.preprocess_profile,
+            affine_setting="none",
+            seed=0,
+        )
+        return image_tensor, label
+
+
 class DigitTestDataset(Dataset):
     def __init__(self, csv_file=config.TEST_CSV, root=config.TEST_DIR, transform=None):
         self.csv_file = Path(csv_file)
@@ -102,10 +136,7 @@ class DigitTestDataset(Dataset):
 
     def _find_image_path(self, image_id):
         image_path = self.root / image_id
-        if image_path.suffix:
-            candidates = [image_path]
-        else:
-            candidates = [image_path.with_suffix(".png")]
+        candidates = [image_path] if image_path.suffix else [image_path.with_suffix(".png")]
 
         for candidate in candidates:
             if candidate.exists():

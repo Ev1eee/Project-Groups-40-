@@ -1,0 +1,5 @@
+run_name,model,data_setting,preprocess_profile,affine_setting,image_file,true_label,predicted_label,predicted_confidence
+strided_cnn_centered,strided_cnn,centered,centered,none,C:\Users\kordi\Desktop\Uni\courses-y3\Image and video processing\project\Project-Groups-40-\iivp-2026-challenge\train\train\5\77775.png,5,2,0.966562
+strided_cnn_centered,strided_cnn,centered,centered,none,C:\Users\kordi\Desktop\Uni\courses-y3\Image and video processing\project\Project-Groups-40-\iivp-2026-challenge\train\train\2\9757.png,2,3,0.669044
+strided_cnn_centered,strided_cnn,centered,centered,none,C:\Users\kordi\Desktop\Uni\courses-y3\Image and video processing\project\Project-Groups-40-\iivp-2026-challenge\train\train\7\5740.png,7,6,0.517809
+strided_cnn_centered,strided_cnn,centered,centered,none,C:\Users\kordi\Desktop\Uni\courses-y3\Image and video processing\project\Project-Groups-40-\iivp-2026-challenge\train\train\3\43650.png,3,2,0.514106

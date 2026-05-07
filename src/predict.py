@@ -104,7 +104,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Create a digit challenge submission.")
     parser.add_argument(
         "--model",
-        choices=["simple_cnn", "improved_cnn", "strided_cnn"],
+        choices=config.MODEL_CHOICES,
         default=config.MODEL_NAME,
         help="Model architecture used by the checkpoint.",
     )
@@ -112,6 +112,12 @@ def parse_args():
         "--augment",
         action="store_true",
         help="Use the augmented experiment name when choosing the default checkpoint.",
+    )
+    parser.add_argument(
+        "--preprocess-profile",
+        choices=config.PREPROCESS_PROFILE_CHOICES,
+        default=config.PREPROCESS_PROFILE,
+        help="Preprocessing profile used for test images.",
     )
     parser.add_argument(
         "--checkpoint",
@@ -168,7 +174,7 @@ def main():
         else config.ROOT_DIR / args.output
     )
 
-    dataset = DigitTestDataset(transform=get_eval_transform())
+    dataset = DigitTestDataset(transform=get_eval_transform(profile=args.preprocess_profile))
     loader = DataLoader(
         dataset,
         batch_size=config.BATCH_SIZE,
@@ -192,6 +198,7 @@ def main():
     save_rows_csv(rows, output_path, ["Id", "Category"])
 
     print(f"checkpoints: {[str(path) for path in checkpoint_paths]}")
+    print(f"preprocess profile: {args.preprocess_profile}")
     print(f"tta: {args.tta}")
     print(f"test samples: {len(rows)}")
     print(f"submission saved to {output_path}")

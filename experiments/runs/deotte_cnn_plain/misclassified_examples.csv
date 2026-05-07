@@ -1,0 +1,2 @@
+run_name,model,data_setting,preprocess_profile,affine_setting,image_file,true_label,predicted_label,predicted_confidence
+deotte_cnn_plain,deotte_cnn,plain,plain,none,C:\Users\kordi\Desktop\Uni\courses-y3\Image and video processing\project\Project-Groups-40-\iivp-2026-challenge\train\train\3\43650.png,3,2,0.932305

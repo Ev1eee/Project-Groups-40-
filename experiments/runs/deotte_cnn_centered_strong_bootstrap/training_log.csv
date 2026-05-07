@@ -1,0 +1,9 @@
+run_name,model,data_setting,preprocess_profile,affine_setting,epoch,train_loss,train_acc,val_loss,val_acc,lr
+deotte_cnn_centered_strong_bootstrap,deotte_cnn,centered_strong_bootstrap,centered,strong,1,0.487955,0.855251,0.027032,0.991765,0.001000
+deotte_cnn_centered_strong_bootstrap,deotte_cnn,centered_strong_bootstrap,centered,strong,2,0.078376,0.978562,0.010544,0.996471,0.000962
+deotte_cnn_centered_strong_bootstrap,deotte_cnn,centered_strong_bootstrap,centered,strong,3,0.050992,0.985882,0.005150,0.997647,0.000854
+deotte_cnn_centered_strong_bootstrap,deotte_cnn,centered_strong_bootstrap,centered,strong,4,0.031851,0.990741,0.003565,0.998824,0.000691
+deotte_cnn_centered_strong_bootstrap,deotte_cnn,centered_strong_bootstrap,centered,strong,5,0.022948,0.993769,0.002818,0.999412,0.000500
+deotte_cnn_centered_strong_bootstrap,deotte_cnn,centered_strong_bootstrap,centered,strong,6,0.018264,0.995163,0.002118,0.999412,0.000309
+deotte_cnn_centered_strong_bootstrap,deotte_cnn,centered_strong_bootstrap,centered,strong,7,0.011646,0.996776,0.000969,0.999412,0.000146
+deotte_cnn_centered_strong_bootstrap,deotte_cnn,centered_strong_bootstrap,centered,strong,8,0.009647,0.997603,0.001077,0.999412,0.000038

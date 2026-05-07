@@ -1,0 +1,2 @@
+run_name,model,data_setting,preprocess_profile,affine_setting,image_file,true_label,predicted_label,predicted_confidence
+improved_cnn_centered_strong_bootstrap,improved_cnn,centered_strong_bootstrap,centered,strong,C:\Users\kordi\Desktop\Uni\courses-y3\Image and video processing\project\Project-Groups-40-\iivp-2026-challenge\train\train\5\77775.png,5,2,0.835247

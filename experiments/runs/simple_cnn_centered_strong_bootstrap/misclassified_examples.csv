@@ -1,0 +1,6 @@
+run_name,model,data_setting,preprocess_profile,affine_setting,image_file,true_label,predicted_label,predicted_confidence
+simple_cnn_centered_strong_bootstrap,simple_cnn,centered_strong_bootstrap,centered,strong,C:\Users\kordi\Desktop\Uni\courses-y3\Image and video processing\project\Project-Groups-40-\iivp-2026-challenge\train\train\0\99527.png,0,8,0.968086
+simple_cnn_centered_strong_bootstrap,simple_cnn,centered_strong_bootstrap,centered,strong,C:\Users\kordi\Desktop\Uni\courses-y3\Image and video processing\project\Project-Groups-40-\iivp-2026-challenge\train\train\1\4796.png,1,6,0.897580
+simple_cnn_centered_strong_bootstrap,simple_cnn,centered_strong_bootstrap,centered,strong,C:\Users\kordi\Desktop\Uni\courses-y3\Image and video processing\project\Project-Groups-40-\iivp-2026-challenge\train\train\6\7133.png,6,1,0.789887
+simple_cnn_centered_strong_bootstrap,simple_cnn,centered_strong_bootstrap,centered,strong,C:\Users\kordi\Desktop\Uni\courses-y3\Image and video processing\project\Project-Groups-40-\iivp-2026-challenge\train\train\7\5740.png,7,6,0.702454
+simple_cnn_centered_strong_bootstrap,simple_cnn,centered_strong_bootstrap,centered,strong,C:\Users\kordi\Desktop\Uni\courses-y3\Image and video processing\project\Project-Groups-40-\iivp-2026-challenge\train\train\2\6947.png,2,3,0.651368

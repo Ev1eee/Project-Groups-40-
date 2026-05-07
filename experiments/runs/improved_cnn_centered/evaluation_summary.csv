@@ -1,0 +1,2 @@
+run_name,model,data_setting,preprocess_profile,affine_setting,checkpoint,checkpoint_epoch,checkpoint_accuracy,val_loss,val_acc,val_error_percent,macro_f1,misclassified_count,val_samples,inference_seconds,inference_ms_per_image,test_submission
+improved_cnn_centered,improved_cnn,centered,centered,none,C:\Users\kordi\Desktop\Uni\courses-y3\Image and video processing\project\Project-Groups-40-\experiments\runs\improved_cnn_centered\best.pt,7,0.997647,0.007199,0.997647,0.235294,0.997647,4,1700,0.971582,0.571519,

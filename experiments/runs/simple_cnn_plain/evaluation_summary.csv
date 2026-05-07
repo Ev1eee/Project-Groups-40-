@@ -1,0 +1,2 @@
+run_name,model,data_setting,preprocess_profile,affine_setting,checkpoint,checkpoint_epoch,checkpoint_accuracy,val_loss,val_acc,val_error_percent,macro_f1,misclassified_count,val_samples,inference_seconds,inference_ms_per_image,test_submission
+simple_cnn_plain,simple_cnn,plain,plain,none,C:\Users\kordi\Desktop\Uni\courses-y3\Image and video processing\project\Project-Groups-40-\experiments\runs\simple_cnn_plain\best.pt,6,0.996471,0.013301,0.996471,0.352941,0.996472,6,1700,0.795710,0.468065,

@@ -1,0 +1,9 @@
+run_name,model,data_setting,preprocess_profile,affine_setting,epoch,train_loss,train_acc,val_loss,val_acc,lr
+improved_cnn_centered_mild_bootstrap,improved_cnn,centered_mild_bootstrap,centered,mild,1,0.160938,0.947778,0.014482,0.996471,0.001000
+improved_cnn_centered_mild_bootstrap,improved_cnn,centered_mild_bootstrap,centered,mild,2,0.032122,0.989967,0.024093,0.991176,0.000962
+improved_cnn_centered_mild_bootstrap,improved_cnn,centered_mild_bootstrap,centered,mild,3,0.018305,0.994052,0.015141,0.996471,0.000854
+improved_cnn_centered_mild_bootstrap,improved_cnn,centered_mild_bootstrap,centered,mild,4,0.013189,0.995752,0.008296,0.997647,0.000691
+improved_cnn_centered_mild_bootstrap,improved_cnn,centered_mild_bootstrap,centered,mild,5,0.007019,0.997745,0.005073,0.998824,0.000500
+improved_cnn_centered_mild_bootstrap,improved_cnn,centered_mild_bootstrap,centered,mild,6,0.002315,0.999412,0.005021,0.998824,0.000309
+improved_cnn_centered_mild_bootstrap,improved_cnn,centered_mild_bootstrap,centered,mild,7,0.001104,0.999739,0.002618,0.998824,0.000146
+improved_cnn_centered_mild_bootstrap,improved_cnn,centered_mild_bootstrap,centered,mild,8,0.000649,0.999869,0.003494,0.998824,0.000038
